@@ -12,26 +12,33 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  // CHANGE: Set initial state to false (or null) to avoid hydration mismatch
+  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Cek localStorage dan system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
+    let isDark = false;
+    
     if (savedTheme === 'light') {
-      setDarkMode(false);
+      isDark = false;
       document.documentElement.classList.remove('dark');
     } else if (savedTheme === 'dark') {
-      setDarkMode(true);
+      isDark = true;
       document.documentElement.classList.add('dark');
     } else if (systemPrefersDark) {
-      setDarkMode(true);
+      isDark = true;
       document.documentElement.classList.add('dark');
     } else {
-      setDarkMode(false);
+      isDark = false;
       document.documentElement.classList.remove('dark');
     }
+    
+    setDarkMode(isDark);
+    setMounted(true);
   }, []);
 
   const toggleDarkMode = () => {
@@ -45,6 +52,11 @@ export const DarkModeProvider = ({ children }) => {
       setDarkMode(true);
     }
   };
+
+  // Prevent hydration mismatch by not rendering children until mounted
+  if (!mounted) {
+    return null; // or return a loading skeleton
+  }
 
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
