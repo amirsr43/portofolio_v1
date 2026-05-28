@@ -88,7 +88,7 @@ const Footer = () => {
               animate="animate"
               style={{ display: "inline-block" }}
             >
-              {" "}❤️
+              {" "}
             </motion.span>
             {" "}All rights reserved.
           </motion.p>
