@@ -72,27 +72,35 @@ const Footer = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="bg-gray-900 dark:bg-gray-950 text-white py-8"
+      className="bg-gray-900 dark:bg-gray-950 text-white py-12 border-t border-gray-800 dark:border-gray-900"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.p 
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Brand & Logo */}
+          <motion.div 
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="text-muted mb-4 md:mb-0"
+            className="flex flex-col items-center md:items-start gap-2"
           >
-            &copy; {currentYear} ReactAja. 
-            <motion.span
-              variants={waveVariants}
-              animate="animate"
-              style={{ display: "inline-block" }}
-            >
-              {" "}
-            </motion.span>
-            {" "}All rights reserved.
-          </motion.p>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/logo.png" 
+                alt="Logo" 
+                className="w-8 h-8 object-contain rounded-lg p-1 bg-white/5 border border-white/10"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
+              <span className="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full animate-pulse bg-violet-400`} />
+                JohnDoe
+              </span>
+            </div>
+            <p className="text-muted text-sm text-center md:text-left">
+              &copy; {currentYear} JohnDoe. All rights reserved.
+            </p>
+          </motion.div>
           
+          {/* Social Links */}
           <motion.div 
             className="flex space-x-6"
             variants={itemVariants}
@@ -107,11 +115,11 @@ const Footer = () => {
                 animate="visible"
                 whileHover="hover"
                 whileTap="tap"
-                className="text-muted hover:text-primary transition-colors duration-300 relative group"
+                className="text-muted hover:text-violet-400 transition-colors duration-300 relative group"
               >
                 {social}
                 <motion.span 
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-500 group-hover:w-full transition-all duration-300"
                   whileHover={{ width: "100%" }}
                   initial={{ width: 0 }}
                 />
