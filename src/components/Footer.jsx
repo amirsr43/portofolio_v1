@@ -92,11 +92,11 @@ const Footer = () => {
               />
               <span className="font-bold text-lg tracking-tight text-white flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full animate-pulse bg-violet-400`} />
-                JohnDoe
+                ReactAja
               </span>
             </div>
             <p className="text-muted text-sm text-center md:text-left">
-              &copy; {currentYear} JohnDoe. All rights reserved.
+              &copy; {currentYear} ReactAja. All rights reserved.
             </p>
           </motion.div>
           
