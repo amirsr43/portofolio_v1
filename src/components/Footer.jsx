@@ -82,13 +82,13 @@ const Footer = () => {
             whileTap={{ scale: 0.98 }}
             className="text-muted mb-4 md:mb-0"
           >
-            &copy; {currentYear} John Doe. 
+            &copy; {currentYear} ReactAja. 
             <motion.span
               variants={waveVariants}
               animate="animate"
               style={{ display: "inline-block" }}
             >
-              {" "}❤️
+              {" "}
             </motion.span>
             {" "}All rights reserved.
           </motion.p>

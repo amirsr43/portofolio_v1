@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../context/DarkModeContext';
 import { useEffect, useState } from 'react';
+import profileImg from '../assets/developer_profile.png';
 
 const fadeLeft = {
   hidden: { opacity: 0, x: -40 },
@@ -88,9 +89,9 @@ const About = () => {
               darkMode ? 'shadow-purple-900/20' : 'shadow-gray-300'
             }`}>
               <motion.img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                src={profileImg}
                 alt="Profile"
-                className="w-full"
+                className="w-full aspect-square md:aspect-[4/5] object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.5 }}
               />
